@@ -2,8 +2,8 @@
 from django.shortcuts import render
 
 
-def home(reuquest, template='home/home.html'):
+def home(request, template='home/home.html'):
     """
     home index for kss
     """
-    return render(reuquest, template)
+    return render(request, template)

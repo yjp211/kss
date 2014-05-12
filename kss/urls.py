@@ -10,6 +10,7 @@ urlpatterns = patterns('kss.views',
 
 urlpatterns += patterns('',
     url(r'^home/', include('kss.app.home.urls')),
+    url(r'^auth/', include('kss.app.auth.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()

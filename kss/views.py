@@ -2,10 +2,10 @@
 from django.shortcuts import render
 from kss.misc.debug import debug
 
-def home(reuquest, template='home.html'):
+def home(request, template='home.html'):
     """
     home index for kss
     """
     debug.view('wocao')
     debug.service('nima')
-    return render(reuquest, template)
+    return render(request, template)

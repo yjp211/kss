@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block sub_title %}
+    登录
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/schema/default/css/auth/login.css">
+{% endblock %}
+
+{% block extra_script %}
+    <script src="/static/lib/validate.js"></script>
+    <script src="/static/js/auth/login.js"></script>
+{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <form id="login-form" class="form-signin" action="{% url 'login_action' %}" method="post" >
+            {% csrf_token %}
+            <h2 class="form-signin-heading">请登录</h2>
+            <input class="form-control" name="username" validation="required" placeholder="用户名" type="text" >
+            <input class="form-control" name="passwd" validation="required" placeholder="口令" type="password" >
+            <button type="submit" class="btn btn-lg btn-primary btn-block">登录</button>
+        </form>
+    </div>
+{% endblock %}
