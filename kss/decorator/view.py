@@ -6,26 +6,33 @@
 
 from django.http.response import HttpResponseNotAllowed
 
-from kss.misc.debug import debug
+from kss.misc.debug import log_view
 
-__all__ = ['request_get', 'request_post']
+__all__ = ['require_get', 'require_post']
 
-def request_method(method):
+def require_method(method):
     """
     request的请求类型必须为 [method]
     @param method: POST|GET
     """
     def func(function=None):
-        def _filter(request, *args, **kwargs):
+        def _filter(self, request, *args, **kwargs):
+
             if request.method != method:
-                debug.view(u"request<%s:%s>请求类型必须为<%s>，当前为<%s>" %
+                log_view.error(u"request<%s:%s>请求类型必须为<%s>，当前为<%s>" %
                            (function.__module__, function.__name__, method, request.method))
                 return HttpResponseNotAllowed([method])
             else:
-                return function(request, *args, **kwargs)
+                return function(self, request, *args, **kwargs)
+
+        # 将__doc__ 传递下去，否则会引起异常
+        _filter.__doc__ = function.__doc__
+        _filter.__module__ = function.__module__
+        _filter.__name__ = function.__name__
+
         return _filter
     return func
 
-request_get = request_method('GET')
+require_get = require_method('GET')
 
-request_post = request_method('POST')
+require_post = require_method('POST')

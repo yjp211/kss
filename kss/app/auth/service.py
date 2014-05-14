@@ -1,2 +1,38 @@
 # -*- coding:utf-8 -*-
 
+from kss.misc import Result
+from kss.misc.base.service import BaseService
+
+
+__all__ = ['service']
+
+USER_NAME = 'admin'
+PASSWD = 'passwd'
+
+
+class AuthService(BaseService):
+
+    def _get_user(self):
+        return USER_NAME
+
+    def _get_pwd(self):
+        return PASSWD
+
+    def auth_user(self, username, passwd):
+        """
+        用户名、口令认证用户
+            @username: 用户名
+            @passwd: 口令
+        """
+        ret = Result()
+        if username != self._get_user():
+            ret.success = False
+            ret.msg = u'用户不存在'
+            return ret
+        if passwd != self._get_pwd():
+            ret.success = False
+            ret.msg = u'口令不正确'
+        return ret
+
+
+service = AuthService()

@@ -1,9 +1,20 @@
 # -*- coding:utf-8 -*-
 from django.shortcuts import render
 
+from kss.misc.base.view import BaseView
 
-def home(request, template='home/home.html'):
+__all__ = ['home']
+
+class HomeView(BaseView):
     """
-    home index for kss
+    主页试图类
     """
-    return render(request, template)
+
+    def home(self, request, template='home/home.html'):
+        """
+        主页
+        """
+        return render(request, template)
+
+
+home = HomeView()

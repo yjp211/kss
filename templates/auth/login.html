@@ -14,7 +14,14 @@
 {% endblock %}
 
 {% block main %}
-
+    <div class="container" id="notice_messages">
+        <span style="display: none;">有这个玩意主要是因为在IE8下，如果一开始为空，导致 第一次append(html)时，还是不显示任何东西</span>
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" data-alert="alert">
+            <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+        </div>
+        {% endfor %}
+    </div>
     <div class="container">
         <form id="login-form" class="form-signin" action="{% url 'login_action' %}" method="post" >
             {% csrf_token %}
