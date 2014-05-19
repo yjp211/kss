@@ -2,9 +2,13 @@
 
 import inspect
 
-from django.http.response import HttpResponseServerError
+from django.http.response import HttpResponseNotAllowed, HttpResponseServerError
 
 from kss.misc.debug import log_view
+
+
+
+__all__ = ['BaseView', 'require_get', 'require_post']
 
 
 def view_wrap(func):
@@ -26,7 +30,7 @@ def view_wrap(func):
             return response
         except Exception, e:
             log_view.error(u'%s [ 出现异常，%s ]' % (description, e))
-            return HttpResponseServerError()
+            raise
 
     return wrapped
 
@@ -44,3 +48,31 @@ class BaseView(object):
             return view_wrap(value)
         else:
             return value
+
+
+def require_method(method):
+    """
+    request的请求类型必须为 [method]
+    @param method: POST|GET
+    """
+    def func(function=None):
+        def _filter(self, request, *args, **kwargs):
+
+            if request.method != method:
+                log_view.error(u"request<%s:%s>请求类型必须为<%s>，当前为<%s>" % \
+                    (function.__module__, function.__name__, method, request.method))
+                return HttpResponseNotAllowed([method])
+            else:
+                return function(self, request, *args, **kwargs)
+
+        # 将__doc__ 传递下去，否则会引起异常
+        _filter.__doc__ = function.__doc__
+        _filter.__module__ = function.__module__
+        _filter.__name__ = function.__name__
+
+        return _filter
+    return func
+
+require_get = require_method('GET')
+
+require_post = require_method('POST')

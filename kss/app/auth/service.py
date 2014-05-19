@@ -4,7 +4,7 @@ from kss.misc import Result
 from kss.misc.base.service import BaseService
 
 
-__all__ = ['service']
+__all__ = ['auth_service']
 
 USER_NAME = 'admin'
 PASSWD = 'passwd'
@@ -35,4 +35,4 @@ class AuthService(BaseService):
         return ret
 
 
-service = AuthService()
+auth_service = AuthService()

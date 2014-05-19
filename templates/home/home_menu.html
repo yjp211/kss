@@ -1,0 +1,30 @@
+{% load i18n %}
+
+<div class="menu">
+    <div class="logo">
+        {% trans "Product Name" %}
+    </div>
+    <div class="login-info">
+        Admin {% trans "Sign In" %} |
+        <a href="{% url 'login_out' %}">{% trans "Sign Out" %}</a>
+    </div>
+    <div class="top-nav">
+        <ul>
+           <li>
+               <a href="{% url 'user_index' %}" class="menu-link">{% trans "User Manage" %}</a>
+           </li>
+           <li>
+               <a href="{% url 'dept_index' %}" class="menu-link">{% trans "Dept Manage" %}</a>
+           </li>
+           <li>
+               <a href="{% url 'police_index' %}" class="menu-link">{% trans "Police Manage" %}</a>
+           </li>
+           <li>
+               <a href="{% url 'backup_index' %}" class="menu-link">{% trans "Backup Manage" %}</a>
+           </li>
+           <li>
+               <a href="{% url 'audit_index' %}" class="menu-link">{% trans "Log Audit" %}</a>
+           </li>
+        </ul>
+    </div>
+</div>

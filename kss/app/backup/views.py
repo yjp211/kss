@@ -5,16 +5,16 @@ from kss.misc.base.view import BaseView
 
 __all__ = ['home']
 
-class AuditView(BaseView):
+class BackupView(BaseView):
     """
-    日志审计
+    数据备份管理
     """
 
-    def index(self, request, template='audit/audit_index.html'):
+    def index(self, request, template='backup/backup_index.html'):
         """
-        日志审计
+        数据备份
         """
         return render(request, template)
 
 
-audit = AuditView()
+backup = BackupView()

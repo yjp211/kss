@@ -2,8 +2,8 @@
 
 from django.conf.urls import patterns, url
 
-from kss.app.home.views import home
+from kss.app.audit.views import audit
 
 urlpatterns = patterns('',
-    url(r'^$', home.index, name='home_index'),
+    url(r'^$', audit.index, name='audit_index'),
 )

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block sub_title %}
+    {% trans "Home" %}
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/schema/default/css/home/home.css">
+{% endblock %}
+
+{% block extra_script %}
+    <script src="/static/js/home/home.js"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        {% include 'home/home_menu.html' %}
+    </div>
+    <div class="content">
+        {% for model in valid_models %}
+            {% if forloop.first %}
+                <iframe src="{{ model.url }}" data-url="{{ model.url }}" class="frame-display" ></iframe>
+            {% else %}
+                <iframe src="" data-url="{{ model.url }}" class="frame-hidden" ></iframe>
+            {% endif %}
+        {% endfor %}
+        <iframe src="{% url 'user_index' %}" data-url="{% url 'user_index' %}" class="frame-display" ></iframe>
+        <iframe src="" data-url="{% url 'dept_index' %}" class="frame-hidden" ></iframe>
+        <iframe src="" data-url="{% url 'police_index' %}" class="frame-hidden" ></iframe>
+        <iframe src="" data-url="{% url 'backup_index' %}" class="frame-hidden" ></iframe>
+        <iframe src="" data-url="{% url 'audit_index' %}" class="frame-hidden" ></iframe>
+    </div>
+{% endblock %}

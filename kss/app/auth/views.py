@@ -4,11 +4,9 @@ from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 
-from kss.decorator.view import require_post
+from kss.misc.base.view import BaseView, require_post
 
-from kss.misc.base.view import BaseView
-
-from kss.app.auth.service import service as auth_service
+from kss.app.auth.service import auth_service
 
 __all__ = ['auth']
 
@@ -25,7 +23,7 @@ class AuthView(BaseView):
 
 
     @require_post
-    def action(self, request):
+    def login_in(self, request):
         """
         认证用户
         """
@@ -41,6 +39,12 @@ class AuthView(BaseView):
         else:
             messages.error(request, u'%s认证用户失败，%s' % (username, ret.msg))
             return redirect(reverse('login_index'))
+
+    def login_out(self, request):
+        """
+        用户登出
+        """
+        return redirect(reverse('login_index'))
 
 
 auth = AuthView()
