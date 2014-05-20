@@ -1,7 +1,13 @@
 # -*- coding:utf-8 -*-
+import os
+import mimetypes
 
 from django.conf.urls import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+from settings import PROJECT_ROOT
+
+mimetypes.knownfiles.append(os.path.join(PROJECT_ROOT, 'mime.type'))
 
 
 urlpatterns = patterns('kss.views',
