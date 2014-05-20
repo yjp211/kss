@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block sub_title %}
+    {% trans "Org Manage" %}
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/schema/default/css/org/org.css">
+{% endblock %}
+
+{% block extra_script %}
+    <script src="/static/js/org/org.js"></script>
+{% endblock %}
+
+{% block main %}
+    Hello Org Manage
+{% endblock %}
