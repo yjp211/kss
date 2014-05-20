@@ -13,9 +13,8 @@ urlpatterns += patterns('',
     url(r'^auth/', include('kss.app.auth.urls')),
     url(r'^audit/', include('kss.app.audit.urls')),
     url(r'^backup/', include('kss.app.backup.urls')),
-    url(r'^dept/', include('kss.app.dept.urls')),
     url(r'^police/', include('kss.app.police.urls')),
-    url(r'^user/', include('kss.app.user.urls')),
+    url(r'^org/', include('kss.app.org.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()

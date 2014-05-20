@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from kss.misc.base.view import BaseView
 
-__all__ = ['home']
+__all__ = ['police']
 
 class PoliceView(BaseView):
     """

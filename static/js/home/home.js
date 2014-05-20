@@ -14,8 +14,8 @@ $(document).ready(function(){
            var data_url = $(this).attr('data-url');
             if(dest_url == data_url){
                 // load the page when first open
-                if($(this)[0].src != data_url){
-                    $(this)[0].src = data_url;
+                if($(this).attr('src') == ''){
+                    $(this).attr('src', data_url);
                 }
                 // show this frame
                 $(this).removeClass('frame-hidden');
