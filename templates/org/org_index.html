@@ -5,14 +5,21 @@
     {% trans "Org Manage" %}
 {% endblock %}
 
+
 {% block extra_css %}
     <link rel="stylesheet" href="/static/schema/default/css/org/org.css">
 {% endblock %}
 
 {% block extra_script %}
+    <script src="/static/lib/dhtmlxtree/js/dhtmlxcommon.js"></script>
+    <script src="/static/lib/dhtmlxtree/js/dhtmlxtree.js"></script>
+    <script src="/static/lib/dhtmlxtree/js/dhtmlxtree_json.js"></script>
     <script src="/static/js/org/org.js"></script>
 {% endblock %}
 
 {% block main %}
     Hello Org Manage
+    <div id="tree">
+    呜呜呜
+    </div>
 {% endblock %}

@@ -25,9 +25,9 @@
                 <iframe src="" data-url="{{ model.url }}" class="frame-hidden" ></iframe>
             {% endif %}
         {% endfor %}
-        <iframe src="{% url 'org_index' %}" data-url="{% url 'org_index' %}" class="frame-display" ></iframe>
-        <iframe src="" data-url="{% url 'police_index' %}" class="frame-hidden" ></iframe>
-        <iframe src="" data-url="{% url 'backup_index' %}" class="frame-hidden" ></iframe>
-        <iframe src="" data-url="{% url 'audit_index' %}" class="frame-hidden" ></iframe>
+        <iframe src="{% url 'org_index' %}" data-url="{% url 'org_index' %}" class="frame-display" frameborder="0"></iframe>
+        <iframe src="" data-url="{% url 'police_index' %}" class="frame-hidden" frameborder="0"></iframe>
+        <iframe src="" data-url="{% url 'backup_index' %}" class="frame-hidden" frameborder="0"></iframe>
+        <iframe src="" data-url="{% url 'audit_index' %}" class="frame-hidden" frameborder="0"></iframe>
     </div>
 {% endblock %}
